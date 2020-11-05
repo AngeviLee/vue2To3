@@ -4,13 +4,15 @@
     <p>{{ msg }}</p>
     <p>{{ msg2 }}</p>
     <p>{{ msg3 }}</p>
+    <button @click="changeMsg">修改msg</button>
 </div>
 </template>
 
 <script>
 import {
     reactive,
-    ref
+    ref,
+    toRefs
 } from '@vue/composition-api'
 export default {
     data() {
@@ -28,8 +30,16 @@ export default {
         // vue3.x第二种方式（不推荐）
         const msg3 = ref('加油加油')
 
+        const changeMsg = () => {
+            // vue3.x 方式修改值
+            state.msg2 = '你是一个大花旦!'
+        }
+
         return {
-            msg3
+            msg3,
+            // vue3.x双向数据绑定
+            ...toRefs(state),
+            changeMsg
         }
     }
 }
