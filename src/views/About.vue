@@ -23,7 +23,12 @@ export default {
             msg2: '你好，我是坏蛋！'
         })
 
-        return state
+        // return state
+        const msg3 = ref('加油加油')
+
+        return {
+            msg3
+        }
     }
 }
 </script>
