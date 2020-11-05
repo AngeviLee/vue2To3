@@ -3,6 +3,7 @@
     <h1>This is an about page</h1>
     <p>{{ msg }}</p>
     <p>{{ msg2 }}</p>
+    <p>{{ msg3 }}</p>
 </div>
 </template>
 
@@ -17,13 +18,14 @@ export default {
             msg: '对不起，我是一个警察'
         }
     },
-    // vue3的第一种方式
+    // vue3的第一种方式（推荐）
     setup() {
         const state = reactive({
             msg2: '你好，我是坏蛋！'
         })
 
         // return state
+        // vue3.x第二种方式（不推荐）
         const msg3 = ref('加油加油')
 
         return {
