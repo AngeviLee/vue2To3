@@ -17,6 +17,8 @@ import {
     toRefs,
     computed,  // 引入计算属性
     watch,  // 引入侦听器
+    onMounted,  // 引入生命周期钩子函数
+    onUnmounted,  // 引入生命周期钩子函数
 } from '@vue/composition-api'
 export default {
     data() {
@@ -62,6 +64,14 @@ export default {
         //     return state.num * 2
         // })
 
+        onMounted(() => {
+            console.log('onMounted');
+        })
+
+        onUnmounted(() => {
+            console.log('onUnmounted');
+        })
+
         return {
             msg3,
             // vue3.x双向数据绑定
@@ -79,5 +89,6 @@ export default {
     created() {
       console.log('created');  
     },
+
 }
 </script>
