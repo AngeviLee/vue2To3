@@ -20,7 +20,8 @@ import {
     computed,  // 引入计算属性
     watch,  // 引入侦听器
     onMounted,  // 引入生命周期钩子函数
-    onUnmounted,  // 引入生命周期钩子函数
+    onUnmounted,
+    provide,  // 引入生命周期钩子函数
 } from '@vue/composition-api'
 export default {
     components: {  // 注册挂载子组件
@@ -39,6 +40,7 @@ export default {
     // vue3的第一种方式（推荐）
     setup() {
         // console.log('setup');
+        provide('msg', '依赖注入')
 
         const state = reactive({
             msg2: '你好，我是坏蛋！',
