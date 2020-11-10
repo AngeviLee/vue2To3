@@ -7,10 +7,12 @@
     <button @click="changeMsg">修改msg</button>
     <p>{{ num }}</p>
     <p>{{ doubleNum }}</p>
+    <Test :msg="msg2" />
 </div>
 </template>
 
 <script>
+import Test from '@/components/Test'  // 引入子组件
 import {
     reactive,
     ref,
@@ -21,6 +23,9 @@ import {
     onUnmounted,  // 引入生命周期钩子函数
 } from '@vue/composition-api'
 export default {
+    components: {  // 注册挂载子组件
+        Test
+    }, 
     data() {
         return {
             msg: '对不起，我是一个警察'
@@ -28,12 +33,12 @@ export default {
     },
 
     beforeCreate() {
-        console.log('beforeCreated');
+        // console.log('beforeCreated');
     },
 
     // vue3的第一种方式（推荐）
     setup() {
-        console.log('setup');
+        // console.log('setup');
 
         const state = reactive({
             msg2: '你好，我是坏蛋！',
@@ -65,11 +70,11 @@ export default {
         // })
 
         onMounted(() => {
-            console.log('onMounted');
+            // console.log('onMounted');
         })
 
         onUnmounted(() => {
-            console.log('onUnmounted');
+            // console.log('onUnmounted');
         })
 
         return {
@@ -87,7 +92,7 @@ export default {
      *   ② setup钩子函数执行顺序在created和beforeCreated钩子函数之间
      */
     created() {
-      console.log('created');  
+    //   console.log('created');  
     },
 
 }
