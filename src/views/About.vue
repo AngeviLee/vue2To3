@@ -25,8 +25,14 @@ export default {
         }
     },
 
+    beforeCreate() {
+        console.log('beforeCreated');
+    },
+
     // vue3的第一种方式（推荐）
     setup() {
+        console.log('setup');
+
         const state = reactive({
             msg2: '你好，我是坏蛋！',
             num: 1,
@@ -64,6 +70,14 @@ export default {
             changeMsg,
             // doubleNum
         }
-    }
+    },
+    /**
+     * vue3.x中，setup生命钩子函数：
+     *   ① 代替2.x中的created和beforeCreated钩子函数
+     *   ② setup钩子函数执行顺序在created和beforeCreated钩子函数之间
+     */
+    created() {
+      console.log('created');  
+    },
 }
 </script>
