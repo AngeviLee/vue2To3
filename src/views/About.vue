@@ -16,6 +16,7 @@ import {
     ref,
     toRefs,
     computed,  // 引入计算属性
+    watch,  // 引入侦听器
 } from '@vue/composition-api'
 export default {
     data() {
@@ -31,6 +32,11 @@ export default {
             num: 1,
             // 计算属性的第二种方式
             doubleNum: computed(() => state.num * 3)
+        })
+
+        watch(() => state.num, (newValue, oldValue) => {
+            console.log('旧值', oldValue);
+            console.log('新值', newValue);
         })
 
         // return state
