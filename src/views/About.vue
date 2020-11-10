@@ -29,6 +29,8 @@ export default {
         const state = reactive({
             msg2: '你好，我是坏蛋！',
             num: 1,
+            // 计算属性的第二种方式
+            doubleNum: computed(() => state.num * 3)
         })
 
         // return state
@@ -44,9 +46,9 @@ export default {
         }
 
         // vue3.x计算属性：第一种方式
-        const doubleNum = computed(() => {
-            return state.num * 2
-        })
+        // const doubleNum = computed(() => {
+        //     return state.num * 2
+        // })
 
         return {
             msg3,
@@ -54,7 +56,7 @@ export default {
             ...toRefs(state),
             // 返回函数方法
             changeMsg,
-            doubleNum
+            // doubleNum
         }
     }
 }
