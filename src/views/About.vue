@@ -5,6 +5,8 @@
     <p>{{ msg2 }}</p>
     <p>{{ msg3 }}</p>
     <button @click="changeMsg">修改msg</button>
+    <p>{{ num }}</p>
+    <p>{{ doubleNum }}</p>
 </div>
 </template>
 
@@ -12,7 +14,8 @@
 import {
     reactive,
     ref,
-    toRefs
+    toRefs,
+    computed,  // 引入计算属性
 } from '@vue/composition-api'
 export default {
     data() {
@@ -20,10 +23,12 @@ export default {
             msg: '对不起，我是一个警察'
         }
     },
+
     // vue3的第一种方式（推荐）
     setup() {
         const state = reactive({
-            msg2: '你好，我是坏蛋！'
+            msg2: '你好，我是坏蛋！',
+            num: 1,
         })
 
         // return state
@@ -34,15 +39,22 @@ export default {
             // vue3.x 方式修改值
             state.msg2 = '你是一个大花旦!'
             // vur3.x通过方式2ref修改值
-            msg3.value = '刚把得'
+            msg3.value = '刚把得',
+            state.num++
         }
+
+        // vue3.x计算属性：第一种方式
+        const doubleNum = computed(() => {
+            return state.num * 2
+        })
 
         return {
             msg3,
             // vue3.x双向数据绑定
             ...toRefs(state),
             // 返回函数方法
-            changeMsg
+            changeMsg,
+            doubleNum
         }
     }
 }
